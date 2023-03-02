@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <style>
+    .img-fluid {
+      height: 300px;
+      width: 300px;
+    }
+  </style>
+</head>
+<title>Student Registration</title>
+
+<body>
+  <div class="img view"
+    style="background-image: url('http://127.0.0.1:5501/photos/background1.jpg'); background-repeat: no-repeat;background-size: cover; background-position: center center;">
+    <div class="row align-items-end navbar-dark bg-dark">
+      <div class=" col-2 d-flex">
+        <a class="navbar-brand m-2" href="/Student-Home-page.html"><i class="bi bi-house"></i></a>
+        <a class="navbar-brand ms-4 m-2" href="#">Gallery</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center tp-5 pt-5">
+        <strong class="fs-1">Welcome to Gallery</strong>
+      </div>
+    </div>
+    <div class="container pt-4">
+      <div class="row row-cols-xxl-6 row-cols-xl-4 row-cols-lg-3 row-cols-md-2" id="img-add">
+      </div>
+    </div>
+    <script>
+      for (var j = 1; j <= localStorage.length; j++) {
+        let obj = JSON.parse(localStorage.getItem(j));
+        sName = obj.student_name;
+        sMarks = obj.marks;
+        gen = obj.gender;
+        sPhoto = obj.photo;
+        sData = 'Name: ' + sName + '<br> Marks:' + sMarks + '<br> Gender: ' + gen;
+        var div1 = '<div class="col mb-5">';
+        var imgUrl = '<img class="img-fluid"  src="/photos/' + sPhoto + '"alt="' + sPhoto + '"/>';
+        var figCaption = '<figcaption class="bg-light d-flex justify-content-center">' + sData + '</figcaption>';
+        var div2 = '</div>';
+        var sCard = div1 + imgUrl + figCaption + div2;
+        $('#img-add').append(sCard);
+      }
+    </script>
+</body>
+
+</html>
